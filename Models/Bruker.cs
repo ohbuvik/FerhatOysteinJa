@@ -13,5 +13,11 @@ public class Bruker
     [Display(Name = "Antall spill gjennomført")]
     [Range(0, int.MaxValue, ErrorMessage = "Antall spill må være 0 eller høyere.")]
     public int AntallSpill { get; set; }
+
+
+    public void IncrementCount()
+        {
+            AntallSpill++;
+        }
 }
 

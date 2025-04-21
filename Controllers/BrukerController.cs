@@ -125,4 +125,42 @@ public class BrukereController : Controller
     {
         return _context.Brukere.Any(e => e.Id == id);
     }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> IncrementCount(int id)
+    {
+        var bruker = await _context.Brukere.FindAsync(id);
+        if (bruker == null)
+            return NotFound();
+
+        bruker.AntallSpill++;
+        _context.Update(bruker);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Edit), new { id });
+    }
+
+public async Task<IActionResult> DecrementCount(int id)
+    {
+        var bruker = await _context.Brukere.FindAsync(id);
+        if (bruker == null)
+            return NotFound();
+
+        bruker.AntallSpill--;
+        _context.Update(bruker);
+        await _context.SaveChangesAsync();
+
+        return RedirectToAction(nameof(Edit), new { id });
+    }
+public async Task<IActionResult> Top5()
+{
+    var top5 = await _context.Brukere
+        .OrderByDescending(b => b.AntallSpill)
+        .Take(5)
+        .ToListAsync();
+
+    return View(top5); // Passer data til viewet
+}
+
 }

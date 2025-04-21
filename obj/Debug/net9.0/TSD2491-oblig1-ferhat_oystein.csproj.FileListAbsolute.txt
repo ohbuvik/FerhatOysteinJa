@@ -1106,3 +1106,4 @@
 /Users/ohbuvik/Documents/Skole/FerhatOysteinJa/obj/Debug/net9.0/TSD2491-oblig1-ferhat_oystein.pdb
 /Users/ohbuvik/Documents/Skole/FerhatOysteinJa/obj/Debug/net9.0/TSD2491-oblig1-ferhat_oystein.genruntimeconfig.cache
 /Users/ohbuvik/Documents/Skole/FerhatOysteinJa/obj/Debug/net9.0/ref/TSD2491-oblig1-ferhat_oystein.dll
+/Users/ohbuvik/Documents/Skole/FerhatOysteinJa/obj/Debug/net9.0/TSD2491-oblig1-ferhat_oystein.sourcelink.json

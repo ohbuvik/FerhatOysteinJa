@@ -6,27 +6,47 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<form asp-action="Edit">
-    <div class="form-group">
-        <label asp-for="Navn" class="control-label"></label>
-        <input asp-for="Navn" class="form-control" />
-        <span asp-validation-for="Navn" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="KontaktInfo" class="control-label"></label>
-        <input asp-for="KontaktInfo" class="form-control" />
-        <span asp-validation-for="KontaktInfo" class="text-danger"></span>
-    </div>
-    <div class="form-group">
-        <label asp-for="AntallSpill" class="control-label"></label>
-        <input asp-for="AntallSpill" class="form-control" />
-        <span asp-validation-for="AntallSpill" class="text-danger"></span>
-    </div>
-    <input type="hidden" asp-for="Id" />
-    <button type="submit" class="btn btn-primary">Lagre</button>
-    <a asp-action="Index" class="btn btn-secondary">Avbryt</a>
-</form>
+<!-- Hovedform for redigering -->
+@using (Html.BeginForm("Edit", "Brukere", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.HiddenFor(model => model.Id)
 
+    <div class="form-group">
+        @Html.LabelFor(model => model.Navn, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.Navn, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.Navn, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.KontaktInfo, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.KontaktInfo, new { @class = "form-control" })
+        @Html.ValidationMessageFor(model => model.KontaktInfo, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.AntallSpill, htmlAttributes: new { @class = "control-label" })
+        @Html.TextBoxFor(model => model.AntallSpill, new { @class = "form-control", @readonly = "readonly" })
+        @Html.ValidationMessageFor(model => model.AntallSpill, "", new { @class = "text-danger" })
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lagre</button>
+    @Html.ActionLink("Avbryt", "Index", null, new { @class = "btn btn-secondary" })
+}
+
+<!-- Ekstra form for +1 knapp -->
+@using (Html.BeginForm("IncrementCount", "Brukere", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("id", Model.Id)
+    <button type="submit" class="btn btn-warning mt-2">+1 Antall Spill</button>
+}
+@using (Html.BeginForm("DecrementCount", "Brukere", FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    @Html.Hidden("id", Model.Id)
+    <button type="submit" class="btn btn-danger mt-2">-1 Reduser Antall Spill</button>
+}
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @await Html.PartialAsync("_ValidationScriptsPartial")
 }

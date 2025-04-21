@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TSD2491-oblig1-ferhat_oystein")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+982de7025fe9cad910f4239e84a09ce198bb1cc4")]
 [assembly: System.Reflection.AssemblyProductAttribute("TSD2491-oblig1-ferhat_oystein")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TSD2491-oblig1-ferhat_oystein")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
